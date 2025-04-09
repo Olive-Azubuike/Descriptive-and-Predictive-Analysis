@@ -1,40 +1,21 @@
-DSC is an organization that helps non-profit organizations to find donors for their good causes. 
-They have a huge database with candidate donors. DSC now wants to launch a new re-activation 
-campaign where they want to send letters to donors that have been inactive for a long time, 
-hoping that they will donate again. The CEO & Head of Data Analytics (conveniently, this is the 
-same person for this exercise) have to be convinced that your model is better than just randomly 
-selecting donors.
-DSC is mostly interested in customers that have donated €30 or more, but you can be flexible in 
-this decision, depending on your business case.
+Project Overview: This project focuses on building a machine-learning model to predict whether a customer review score for an order will be positive (4-5) or negative (1-3). The dataset includes customer orders, product details, payment information, and delivery metrics. The goal is to analyze key factors affecting review scores and provide actionable business recommendations.
 
-Datasets
+Business Problem: Customer satisfaction is crucial for e-commerce success. Understanding what influences review scores helps businesses optimize logistics, pricing, and customer service. By predicting review scores in advance, companies can take proactive measures to improve customer experience and minimize negative feedback.
 
-DSC provides 5 datasets:
-• donors.csv contains general information about the candidate donor database.
-− donorID: The unique ID of the candidate donor.
-− zipcode: The postal code of the candidate donor’s main address.
-− province: The province of the candidate donor’s main address.
-− region: The region of the candidate donor’s main address.
-− gender: The gender of the candidate donor (M = male, F = female).
-− language: The candidate donor’s preferred communication language (FR = French, NL 
-= Dutch, EN = English).
-− dateOfBirth: The date of birth of the candidate donor.
-• gifts.csv contains information about the gifts that these candidate donors donated in the 
-past for campaigns that are no re-activation campaigns
-− donorID: The unique ID of the candidate donor.
-− campaignID: The unique ID of the campaign (donation was made outside of a campaign 
-if missing).
-− amount: The amount of the donation (in EUR)
-− date: The date of the donation payment.
-• selection campaign 6169.csv: donors that were selected for a previous re-activation 
-campaign on 04/09/2018.
-• selection campaign 7244.csv: donors that were selected for a previous re-activation 
-campaign on 18/06/2019.
- 
-• campaigns: contains information about the different campaigns organized by DSC since 
-December 2014.
-− campaignID: The unique ID of the campaign.
-− date: The date of the campaign (when the letters were sent).
-− lettersSent: The number of letters sent.
-− CostUnit: The unitary cost of the campaign (Cost of the campaign divided by the number 
-of letters sent).
+Data Sources & Preprocessing: The project utilized multiple datasets:
+
+Orders Dataset: Order status, timestamps, and delivery times. Products Dataset: Product details such as weight, dimensions, and category. Order Items Dataset: Quantity, price, and shipping costs per order. Payments Dataset: Payment types, instalments, and complexity. Reviews Dataset: Review scores and response times.
+
+Data Cleaning & Feature Engineering: Handled missing values and outliers. Created derived features such as delivery_delay, total_shipping_cost, payment_complexity, and order_size. Engineered interaction terms to capture relationships between features.
+
+Algorithms Tested: Gradient Boosting Trees (GBTClassifier) – Best Performing Model, Random Forest, Logistic Regression
+
+Final Model (GBTClassifier) Performance:  Accuracy: 81.6, AUC: 0.706
+
+ Hyperparameter tuning was conducted using cross-validation to optimize model performance. ✔ Stacking models (GBT + RandomForest + Logistic Regression) were also tested but not implemented in this solution.
+
+Key Insights & Business Recommendations:  Delivery delays were the most significant predictor of negative reviews.  High shipping costs and large order sizes negatively impacted satisfaction. Orders paid via vouchers showed distinct patterns compared to other payment methods.
+
+Next Steps: Implement real-time prediction for proactive customer support.  Optimize delivery processes to reduce delays and improve satisfaction. 🚀 Test additional ensemble learning techniques to increase AUC.
+
+Requirements: Databricks / Apache Spark Python 3.8+ PySpark, XGBoost, Imbalanced-learn
