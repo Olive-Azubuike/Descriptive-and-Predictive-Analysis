@@ -8,7 +8,7 @@ Orders Dataset: Order status, timestamps, and delivery times. Products Dataset: 
 
 Data Cleaning & Feature Engineering: Handled missing values and outliers. Created derived features such as delivery_delay, total_shipping_cost, payment_complexity, and order_size. Engineered interaction terms to capture relationships between features.
 
-Algorithms Tested: Gradient Boosting Trees (GBTClassifier) – Best Performing Model, Random Forest, Logistic Regression
+Algorithms Tested: Gradient Boosting Trees (GBTClassifier) – Best Performing Model, Random Forest, Logistic Regression.
 
 Final Model (GBTClassifier) Performance:  Accuracy: 81.6, AUC: 0.706
 
